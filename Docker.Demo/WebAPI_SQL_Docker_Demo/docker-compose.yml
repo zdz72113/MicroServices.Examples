@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  webmvc:
+    image: webmvc
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    build:
+      context: ./WebMVC
+      dockerfile: Dockerfile
+    ports: 
+    - "8080:80"
+    volumes: 
+      - ./WebMVC/bin/pub/:/app
+    container_name: webmvc
+    depends_on:
+      - todo.api
+
+  todo.api:
+    image: todo.api
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - ConnectionString=Server=sql.data;User=sa;Password=Pass@word;Database=WebAPI_SQL_Docker_Demo;    
+    build:
+      context: ./Todo.Api
+      dockerfile: Dockerfile
+    ports: 
+      - "8081:80"
+    volumes: 
+      - ./Todo.Api/bin/pub/:/app
+    container_name: todo.api
+    depends_on:
+      - sql.data
+
+  sql.data:
+    image: microsoft/mssql-server-linux:2017-latest
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"

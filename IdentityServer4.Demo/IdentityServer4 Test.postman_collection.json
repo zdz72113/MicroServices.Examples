@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "3915e8c5-bee4-4cca-a21d-c2a8e484f09e",
+		"name": "IdentityServer4 Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": ".well-known/openid-configuration",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:5000/.well-known/openid-configuration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						".well-known",
+						"openid-configuration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "client_credentials get token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "client_id",
+							"value": "client",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "client_secret",
+							"value": "secret",
+							"type": "text",
+							"description": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "client_credentials get resource api",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImJkYWY3MWZmMDJjZjgxOTkzNGJiNGY0MzVmNWEyNDFiIiwidHlwIjoiSldUIn0.eyJuYmYiOjE1MzAxNTE0MjcsImV4cCI6MTUzMDE1NTAyNywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAwIiwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC9yZXNvdXJjZXMiLCJhcGkxIl0sImNsaWVudF9pZCI6ImNsaWVudCIsInNjb3BlIjpbImFwaTEiXX0.boRZQ7PZI-24k5l7v2GZgs94vWj0Ys2TE7_X_HVmAqW147Sxgg-y6_ylwtF2clhTHDhULKqifYQKMkt00jcMjc4AgjgJ4kN88WjKZdlV-yNrqTWDiwvqMZoR0Bn6K1annvcVOG46fzysVmPLPhlegUtqBPw0HyFWg2xU-UVOEjFWh1jMWsGQNFkgZmiD2CImI2jvP7ecLn6G1aDT1NKso6PRcpZAruq7CXpYKPNdWgGeXOfDwCJb7L2c1IrlMkLT-f2WqX7ZLDs5uY1UpVGEmP0WwAtWZn0EL53im-Z6IgPn2eDAfkAxGyAalEMBgdNqjLlbhefe_O4VT790AtfEwQ"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:5001/api/values",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"values"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ResourceOwnerPasswords get token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "client_id",
+							"value": "ro.client",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "client_secret",
+							"value": "secret",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "username",
+							"value": "royz",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ResourceOwnerPasswords get resource api",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImJkYWY3MWZmMDJjZjgxOTkzNGJiNGY0MzVmNWEyNDFiIiwidHlwIjoiSldUIn0.eyJuYmYiOjE1MzAxNTE0MjcsImV4cCI6MTUzMDE1NTAyNywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAwIiwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC9yZXNvdXJjZXMiLCJhcGkxIl0sImNsaWVudF9pZCI6ImNsaWVudCIsInNjb3BlIjpbImFwaTEiXX0.boRZQ7PZI-24k5l7v2GZgs94vWj0Ys2TE7_X_HVmAqW147Sxgg-y6_ylwtF2clhTHDhULKqifYQKMkt00jcMjc4AgjgJ4kN88WjKZdlV-yNrqTWDiwvqMZoR0Bn6K1annvcVOG46fzysVmPLPhlegUtqBPw0HyFWg2xU-UVOEjFWh1jMWsGQNFkgZmiD2CImI2jvP7ecLn6G1aDT1NKso6PRcpZAruq7CXpYKPNdWgGeXOfDwCJb7L2c1IrlMkLT-f2WqX7ZLDs5uY1UpVGEmP0WwAtWZn0EL53im-Z6IgPn2eDAfkAxGyAalEMBgdNqjLlbhefe_O4VT790AtfEwQ"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:5001/api/values",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"values"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

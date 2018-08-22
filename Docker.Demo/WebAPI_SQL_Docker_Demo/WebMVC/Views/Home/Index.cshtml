@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    @model WebMVC.Models.IndexViewModel
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <h1>Todos (@Model.Todos.Count())</h1>
+        <hr class="no-margin" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        @foreach (var todo in Model.Todos)
+        {
+            <div>
+                <div class="title-container">
+                    <h3>@todo.Name</h3>
+                </div>
+                <p class="IsComplete">@todo.IsComplete</p>
+                <hr />
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <h1>Machines (@Model.Machines.Count())</h1>
+        <hr class="no-margin" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        @foreach (var machine in Model.Machines)
+        {
+            <div>
+                <div class="title-container">
+                    <h3>@machine</h3>
+                </div>
+                <hr />
+            </div>
+        }
+    </div>
+</div>

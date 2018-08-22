@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+
+  applicants.api:
+    image: gettestdata.api
+    environment:
+      - ConnectionString=Host=db;Port=5432;Database=MSDemo;Username=postgres;Password=Open@001;    
+    build:
+      context: ./GetTestData.Api
+      dockerfile: Dockerfile
+    ports: 
+    - "8081:80"
+    volumes: 
+      - ./GetTestData.Api/bin/pub/:/app
+    container_name: gettestdata.api
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: "Open@001"
+    ports:
+      - "54322:5432"
+    container_name: postgres_demo_db
